@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  title: The Saurfang API
+  version: 1.0.0
+  description: Docs for the Saurfang API
+paths:
+  /name/measure:
+    get:
+      operationId: getMeasure
+      summary: get measure
+      description: get measure
+      tags:
+        - name
+      deprecated: false
+      parameters:
+        - name: first_name
+          description: first name
+          required: true
+          in: query
+          type: string
+        - name: last_name
+          description: last name
+          required: true
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+  /name/score:
+    get:
+      operationId: getScore
+      summary: get score
+      description: get score
+      tags:
+        - name
+      deprecated: false
+      parameters:
+        - name: first_name
+          description: first name
+          required: true
+          in: query
+          type: string
+        - name: last_name
+          description: last name
+          required: true
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: integer
+            format: int32
+definitions: {}
+securityDefinitions: {}
