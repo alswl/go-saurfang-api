@@ -1,4 +1,4 @@
-module github.com/go-saurfang
+module github.com/alswl/go-saurfang
 
 go 1.18
 
