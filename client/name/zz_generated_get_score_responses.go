@@ -11,6 +11,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/alswl/go-saurfang/models"
 )
 
 // GetScoreReader is a Reader for the GetScore structure.
@@ -27,6 +29,18 @@ func (o *GetScoreReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewGetScoreBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewGetScoreNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -43,22 +57,68 @@ GetScoreOK describes a response with status code 200, with default header values
 OK
 */
 type GetScoreOK struct {
-	Payload int32
+	Payload *models.SanCaiWuGeResultVO
 }
 
 func (o *GetScoreOK) Error() string {
 	return fmt.Sprintf("[GET /name/score][%d] getScoreOK  %+v", 200, o.Payload)
 }
-func (o *GetScoreOK) GetPayload() int32 {
+func (o *GetScoreOK) GetPayload() *models.SanCaiWuGeResultVO {
 	return o.Payload
 }
 
 func (o *GetScoreOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.SanCaiWuGeResultVO)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetScoreBadRequest creates a GetScoreBadRequest with default headers values
+func NewGetScoreBadRequest() *GetScoreBadRequest {
+	return &GetScoreBadRequest{}
+}
+
+/*
+GetScoreBadRequest describes a response with status code 400, with default header values.
+
+400
+*/
+type GetScoreBadRequest struct {
+}
+
+func (o *GetScoreBadRequest) Error() string {
+	return fmt.Sprintf("[GET /name/score][%d] getScoreBadRequest ", 400)
+}
+
+func (o *GetScoreBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetScoreNotFound creates a GetScoreNotFound with default headers values
+func NewGetScoreNotFound() *GetScoreNotFound {
+	return &GetScoreNotFound{}
+}
+
+/*
+GetScoreNotFound describes a response with status code 404, with default header values.
+
+404
+*/
+type GetScoreNotFound struct {
+}
+
+func (o *GetScoreNotFound) Error() string {
+	return fmt.Sprintf("[GET /name/score][%d] getScoreNotFound ", 404)
+}
+
+func (o *GetScoreNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
