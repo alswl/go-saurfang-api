@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetMeasure(params *GetMeasureParams, opts ...ClientOption) (*GetMeasureOK, error)
+	GetMeasure(params *GetMeasureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeasureOK, error)
 
-	GetScore(params *GetScoreParams, opts ...ClientOption) (*GetScoreOK, error)
+	GetScore(params *GetScoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScoreOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -42,7 +42,7 @@ GetMeasure gets measure
 
 get measure
 */
-func (a *Client) GetMeasure(params *GetMeasureParams, opts ...ClientOption) (*GetMeasureOK, error) {
+func (a *Client) GetMeasure(params *GetMeasureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeasureOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMeasureParams()
@@ -56,6 +56,7 @@ func (a *Client) GetMeasure(params *GetMeasureParams, opts ...ClientOption) (*Ge
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetMeasureReader{formats: a.formats},
+		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -82,7 +83,7 @@ GetScore gets score
 
 get score
 */
-func (a *Client) GetScore(params *GetScoreParams, opts ...ClientOption) (*GetScoreOK, error) {
+func (a *Client) GetScore(params *GetScoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScoreOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetScoreParams()
@@ -96,6 +97,7 @@ func (a *Client) GetScore(params *GetScoreParams, opts ...ClientOption) (*GetSco
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &GetScoreReader{formats: a.formats},
+		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
