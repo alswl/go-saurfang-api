@@ -9,6 +9,11 @@ info:
   license:
     name: unknown
     url: https://alswl.com
+security:
+  - basicAuth: []
+securityDefinitions:
+  basicAuth:
+    type: basic
 paths:
   /name/measure:
     get:
@@ -134,4 +139,3 @@ definitions:
     required:
       - lastName
       - firstName
-securityDefinitions: {}
