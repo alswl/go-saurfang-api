@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/alswl/go-saurfang/models"
+	"github.com/alswl/go-saurfang-api/models"
 )
 
 // GetScoreReader is a Reader for the GetScore structure.

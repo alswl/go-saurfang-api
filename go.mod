@@ -3,7 +3,6 @@ module github.com/alswl/go-saurfang-api
 go 1.18
 
 require (
-	github.com/alswl/go-saurfang v0.0.0-20230617125021-215758bf56ca
 	github.com/go-openapi/errors v0.20.3
 	github.com/go-openapi/runtime v0.26.0
 	github.com/go-openapi/strfmt v0.21.7

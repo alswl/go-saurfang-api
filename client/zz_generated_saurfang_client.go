@@ -10,7 +10,7 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/alswl/go-saurfang/client/name"
+	"github.com/alswl/go-saurfang-api/client/name"
 )
 
 // Default saurfang HTTP client.

@@ -32,7 +32,7 @@ IMAGE_PREFIX ?= $(strip )
 IMAGE_SUFFIX ?= $(strip )
 
 # This repo's root import path (under GOPATH).
-ROOT := github.com/alswl/go-saurfang
+ROOT := github.com/alswl/go-saurfang-api
 
 # Project main package location (can be multiple ones).
 CMD_DIR := ./cmd
